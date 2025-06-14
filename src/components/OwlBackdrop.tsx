@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 /**
  * Minimalistic, ominous owl SVG background for the site.
  * Uses glassy gradients and geometric lines for a futuristic touch.
- * Owl's eyes now glow as user scrolls.
+ * Owl's eyes now light up gradually as user scrolls down.
  */
 export const OwlBackdrop: React.FC = () => {
   const leftEyeRef = useRef<SVGEllipseElement>(null);
@@ -19,35 +19,34 @@ export const OwlBackdrop: React.FC = () => {
   useEffect(() => {
     let ctx: gsap.Context | undefined;
     ctx = gsap.context(() => {
-      // Animate the glow opacity as you scroll over the hero (top 60vh)
-      gsap.fromTo(
+      // Animate eyes lighting up and glow increasing as user scrolls
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: "#home",
+          start: "top top",
+          end: "bottom top+=300",
+          scrub: 0.7,
+        },
+      })
+      .to(
         [leftGlowRef.current, rightGlowRef.current],
-        { opacity: 0.25 },
         {
           opacity: 1,
-          duration: 1.5,
-          scrollTrigger: {
-            trigger: "#home",
-            start: "top top",
-            end: "bottom top+=80",
-            scrub: 0.9,
-          },
-        }
-      );
-      // Optionally, animate the main eyes color up (brighter) as well
-      gsap.fromTo(
+          duration: 1,
+          ease: "power1.out",
+          // also animate glow's fillOpacity for extra vividness
+          attr: { fillOpacity: 0.9 },
+        },
+        0
+      )
+      .to(
         [leftEyeRef.current, rightEyeRef.current],
-        { fill: "#10151c" },
         {
-          fill: "#5cf",
-          duration: 1.5,
-          scrollTrigger: {
-            trigger: "#home",
-            start: "top top",
-            end: "bottom top+=80",
-            scrub: 0.9,
-          },
-        }
+          fill: "#61efff",
+          duration: 1.1,
+          ease: "power1.out",
+        },
+        0
       );
     });
     return () => ctx && ctx.revert();
