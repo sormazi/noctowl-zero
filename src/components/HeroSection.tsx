@@ -24,7 +24,7 @@ export const HeroSection = ({ onWaitlist }: { onWaitlist: () => void }) => {
         {/* Impactful statement added here */}
         <div className="mt-8 mb-3">
           <span className="block text-[clamp(1.7rem,3vw,2.5rem)] font-extrabold text-white tracking-tightest drop-shadow-sm">
-            Markets sleep. NoctOwl doesn’t
+            Markets sleep. NoctOwl doesn’t.
           </span>
         </div>
         <p
