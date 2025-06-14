@@ -1,4 +1,3 @@
-
 // Homepage for NoctOWL ZERO, luxury LLM for finance
 
 import React, { useState, useEffect } from "react";
@@ -8,6 +7,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { MissionSection } from "@/components/MissionSection";
 import { WaitlistSection } from "@/components/WaitlistSection";
 import { Footer } from "@/components/Footer";
+import { OwlBackdrop } from "@/components/OwlBackdrop";
 
 const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,6 +25,8 @@ const Index = () => {
 
   return (
     <div className="font-sans bg-gradient-to-br from-[#22243a]/95 via-[#181A2B]/90 to-[#232747]/90 min-h-screen scroll-smooth relative overflow-x-hidden">
+      <OwlBackdrop />
+      {/* Content overlays backdrop */}
       <NavBar onOpenMenu={() => setMenuOpen(true)} />
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
       <main className="mx-auto max-w-5xl px-4 pt-28 pb-12">
