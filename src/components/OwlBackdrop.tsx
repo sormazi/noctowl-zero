@@ -15,29 +15,8 @@ export const OwlBackdrop: React.FC = () => {
   useEffect(() => {
     let ctx: gsap.Context | undefined;
     ctx = gsap.context(() => {
-      // Animate owl SVG scaling smoothly with scroll progress
-      gsap.fromTo(
-        owlSvgRef.current,
-        {
-          scale: 0.85,
-          transformOrigin: "50% 50%",
-        },
-        {
-          scale: 1.25,
-          transformOrigin: "50% 50%",
-          ease: "none",
-          overwrite: true,
-          scrollTrigger: {
-            trigger: document.documentElement,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 1,
-            // Eyes/Glow will be updated in onUpdate below,
-          },
-        }
-      );
-
-      // Dynamically animate eyes and glow with scroll progress
+      // --- Stagnant Owl: Remove scale animation ---
+      // Eyes and glow still animate as you scroll!
       let eyeFillFrom = [16, 239, 255]; // #10efff blue
       let eyeFillTo = [97, 239, 255];   // #61efff brighter blue
 
@@ -120,7 +99,7 @@ export const OwlBackdrop: React.FC = () => {
             "drop-shadow(0 12px 48px #1c243665) blur(0.5px)",
           maxWidth: "90vw",
           minWidth: 310,
-          willChange: "transform", // very important for performant scaling
+          willChange: "transform", // keep for performance, even if not scaling
         }}
       >
         {/* Face shape */}
