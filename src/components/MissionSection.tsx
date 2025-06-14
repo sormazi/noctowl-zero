@@ -1,4 +1,3 @@
-
 import React from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -95,8 +94,14 @@ export const MissionSection = () => (
           </div>
         </div>
         <div className="pt-4 pl-0 md:pl-12 flex-shrink-0 flex flex-col items-center">
-          <span className="bg-gradient-to-br from-cyan-200 to-cyan-500 rounded-full p-5 shadow-neu shadow-cyan-300/20">
-            <Youtube size={32} strokeWidth={1.2} className="text-cyan-600/90" />
+          <span
+            className="rounded-full p-5 border border-border bg-background text-foreground shadow-md transition-colors duration-200
+              hover:bg-foreground/10 hover:text-primary
+              dark:bg-card dark:text-card-foreground dark:border-border"
+            aria-label="Discover"
+          >
+            {/* Using Youtube icon for consistency; it's now monochrome */}
+            <Youtube size={32} strokeWidth={1.2} className="text-foreground dark:text-card-foreground" />
           </span>
           <span className="mt-2 text-xs font-light tracking-tight uppercase opacity-60">Discover</span>
         </div>
