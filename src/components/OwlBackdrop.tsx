@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
  * Minimalistic, ominous owl SVG background for the site.
  * Uses glassy gradients and geometric lines for a futuristic touch.
  * Owl's eyes now light up gradually as user scrolls down.
+ * Owl SVG scales upward as you scroll down, and downward as you scroll up.
  */
 export const OwlBackdrop: React.FC = () => {
   const leftEyeRef = useRef<SVGEllipseElement>(null);
@@ -20,6 +21,7 @@ export const OwlBackdrop: React.FC = () => {
   useEffect(() => {
     let ctx: gsap.Context | undefined;
     ctx = gsap.context(() => {
+      // One timeline so all effect (eyes, glow, scaling) are in sync
       gsap.timeline({
         scrollTrigger: {
           trigger: "#home",
@@ -51,7 +53,7 @@ export const OwlBackdrop: React.FC = () => {
           owlSvgRef.current,
           {
             scale: 1.17,
-            transformOrigin: "50% 45%",
+            transformOrigin: "50% 50%", // center of the SVG
             duration: 1.15,
             ease: "power1.out",
           },
@@ -78,8 +80,11 @@ export const OwlBackdrop: React.FC = () => {
         viewBox="0 0 620 390"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute opacity-40 md:opacity-55 xl:opacity-65 left-1/2 top-8 md:top-14 -translate-x-1/2 transition-all duration-700"
+        // Removed: left-1/2, -translate-x-1/2 - these were moving the anchor for scaling!
+        className="absolute opacity-40 md:opacity-55 xl:opacity-65 top-8 md:top-14 transition-all duration-700"
         style={{
+          left: "50%",
+          transform: "translateX(-50%)", // only horizontal center (NOT scale!) for visual layout
           filter:
             "drop-shadow(0 12px 48px #1c243665) blur(0.5px)",
           maxWidth: "90vw",
@@ -133,3 +138,4 @@ export const OwlBackdrop: React.FC = () => {
     </div>
   );
 };
+
