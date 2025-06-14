@@ -24,7 +24,7 @@ export const HeroSection = ({ onWaitlist }: { onWaitlist: () => void }) => {
           className="mt-6 text-lg md:text-xl text-white/80 font-light max-w-xl mx-auto tracking-tight"
           style={{ opacity: 0.75 }}
         >
-          The next generation foundation model for valuation and quantitative finance. Designed from the ground up to handle speed, precision, context, scale and nuance—from finance bros to finance bros
+          The next generation foundation LLM for valuation and quantitative finance.
         </p>
         <div className="flex flex-col-reverse md:flex-row gap-3 md:gap-7 justify-center mt-9">
           <NeumorphicButton onClick={onWaitlist} className="w-full md:w-auto">
@@ -35,3 +35,4 @@ export const HeroSection = ({ onWaitlist }: { onWaitlist: () => void }) => {
     </AnimatedSection>
   );
 };
+
