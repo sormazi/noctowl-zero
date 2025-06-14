@@ -15,11 +15,12 @@ export const OwlBackdrop: React.FC = () => {
   useEffect(() => {
     let ctx: gsap.Context | undefined;
     ctx = gsap.context(() => {
+      // Animate all effects in sync, but scale now follows full page scroll
       gsap.timeline({
         scrollTrigger: {
-          trigger: "#home",
+          trigger: document.documentElement, // Use the root element for total page scroll
           start: "top top",
-          end: "bottom top+=300",
+          end: "bottom bottom",
           scrub: 0.7,
         },
       })
@@ -42,7 +43,6 @@ export const OwlBackdrop: React.FC = () => {
           },
           0
         )
-        // Ensure ONLY scale is animated (scale 1 -> 1.17), with consistent origin (center)
         .to(
           owlSvgRef.current,
           {
@@ -51,7 +51,7 @@ export const OwlBackdrop: React.FC = () => {
             duration: 1.15,
             ease: "power1.out",
             overwrite: true,
-            clearProps: "transform", // ensures GSAP manages the transform
+            clearProps: "transform",
           },
           0
         );
@@ -82,7 +82,6 @@ export const OwlBackdrop: React.FC = () => {
             "drop-shadow(0 12px 48px #1c243665) blur(0.5px)",
           maxWidth: "90vw",
           minWidth: 310,
-          // Remove extra transforms, let GSAP manage all scaling and transforms
         }}
       >
         {/* Face shape */}
