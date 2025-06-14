@@ -97,13 +97,12 @@ export const MissionSection = () => (
         </div>
         <div className="pt-4 pl-0 md:pl-12 flex-shrink-0 flex flex-col items-center">
           <NeumorphicButton
-            as="a"
-            href="https://www.youtube.com/"
-            target="_blank"
-            rel="noopener noreferrer"
             className="flex items-center gap-2 text-lg px-6 py-3 shadow-neu transition-all duration-200"
             style={{
               minWidth: 142,
+            }}
+            onClick={() => {
+              window.open("https://www.youtube.com/", "_blank", "noopener,noreferrer");
             }}
           >
             <Youtube size={28} strokeWidth={2} className="text-[#FF0000]" />
