@@ -15,45 +15,35 @@ export const OwlBackdrop: React.FC = () => {
   useEffect(() => {
     let ctx: gsap.Context | undefined;
     ctx = gsap.context(() => {
-      // Eyes and glows animate instantly (at scroll start), only scale follows scroll progress
-      gsap.timeline({
+      // Animate eyes and glow as a one-time effect at scroll start (not scroll-scrubbed)
+      gsap.to([leftGlowRef.current, rightGlowRef.current], {
+        opacity: 1,
+        attr: { fillOpacity: 0.9 },
+        duration: 1,
+        ease: "power1.out",
+        overwrite: true,
+      });
+      gsap.to([leftEyeRef.current, rightEyeRef.current], {
+        fill: "#61efff",
+        duration: 1.1,
+        ease: "power1.out",
+        overwrite: true,
+      });
+
+      // Animate owl SVG scaling smoothly with scroll progress
+      gsap.to(owlSvgRef.current, {
+        scale: 1.17,
+        transformOrigin: "50% 50%",
+        ease: "none",
+        overwrite: true,
+        clearProps: "transform",
         scrollTrigger: {
           trigger: document.documentElement,
           start: "top top",
           end: "bottom bottom",
-          scrub: true, // full smooth progress binding
+          scrub: true, // 1:1 with scroll progress, maximum smoothness
         },
-      })
-        .to(
-          [leftGlowRef.current, rightGlowRef.current],
-          {
-            opacity: 1,
-            attr: { fillOpacity: 0.9 },
-            duration: 1,
-            ease: "power1.out",
-          },
-          0
-        )
-        .to(
-          [leftEyeRef.current, rightEyeRef.current],
-          {
-            fill: "#61efff",
-            duration: 1.1,
-            ease: "power1.out",
-          },
-          0
-        )
-        .to(
-          owlSvgRef.current,
-          {
-            scale: 1.17,
-            transformOrigin: "50% 50%",
-            ease: "none", // linear scroll-sync
-            overwrite: true,
-            clearProps: "transform",
-          },
-          0
-        );
+      });
     });
     return () => ctx && ctx.revert();
   }, []);
@@ -81,6 +71,7 @@ export const OwlBackdrop: React.FC = () => {
             "drop-shadow(0 12px 48px #1c243665) blur(0.5px)",
           maxWidth: "90vw",
           minWidth: 310,
+          willChange: "transform", // very important for performant scaling
         }}
       >
         {/* Face shape */}
