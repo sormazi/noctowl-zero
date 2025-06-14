@@ -2,8 +2,6 @@
 import React, { useEffect, useRef } from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { Youtube } from "lucide-react";
-import { NeumorphicButton } from "@/components/ui/NeumorphicButton";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -19,47 +17,57 @@ export const MissionSection = () => {
     ctx = gsap.context(() => {
       if (!sectionRef.current || !bgRef.current || !textBlockRef.current) return;
 
-      // Pin the section and fade in background
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top center+=44",
-        end: "+=65%",
-        pin: true,
-        pinSpacing: true,
-        anticipatePin: 1,
-        onEnter: () => {},
-        onLeave: () => {},
+      // Clean up existing ScrollTriggers for this section
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (
+          (trigger as any)?.trigger === sectionRef.current
+        ) {
+          trigger.kill();
+        }
       });
 
+      // Smoother, less jarring pin behavior
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top top+=68",  // Start earlier, closer to top for less abruptness
+        end: "+=72%",
+        pin: true,
+        pinSpacing: true,
+        anticipatePin: 0.8, // More gentle
+        scrub: false,
+      });
+
+      // Fade in background more gently
       gsap.fromTo(
         bgRef.current,
         { opacity: 0 },
         {
           opacity: 1,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top center+=44",
-            end: "+=30%",
+            start: "top top+=120",
+            end: "+=23%",
             scrub: true,
           },
         }
       );
 
-      // Animate text word by word
+      // Animate text word by word - subtle, with slightly less translate-y
       const textWords = textBlockRef.current.querySelectorAll(".gsap-word");
       gsap.fromTo(
         textWords,
-        { opacity: 0, y: 28 },
+        { opacity: 0, y: 14 },
         {
           opacity: 1,
           y: 0,
-          stagger: 0.055,
-          ease: "power3.out",
-          duration: 0.92,
+          stagger: 0.07,
+          duration: 0.68,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 70%",
-            end: "top 40%",
+            start: "top 80%",
+            end: "top 53%",
             scrub: false,
             once: true,
           },
@@ -70,16 +78,16 @@ export const MissionSection = () => {
     return () => ctx && ctx.revert();
   }, []);
 
-  // Main feature block text to animate word by word:
+  // Word-by-word animated render
   const buildAnimatedWords = (text: string) =>
-    text.split(" ").map((word, idx) =>
+    text.split(" ").map((word, idx) => (
       <span key={idx} className="gsap-word inline-block opacity-0">{word}&nbsp;</span>
-    );
+    ));
 
   return (
     <AnimatedSection as="section" id="mission" className="max-w-4xl mx-auto mt-24 relative" delay={150}>
       <div ref={sectionRef} className="relative">
-        {/* Background fade-in overlay */}
+        {/* Fading-in background */}
         <div
           ref={bgRef}
           className="absolute inset-0 z-[-1] bg-gradient-to-br from-[#2e3752]/75 via-[#181c31]/65 to-[#16192d]/80 rounded-[2.7rem] scale-105 blur-md opacity-0 pointer-events-none transition-all duration-700"
@@ -87,11 +95,13 @@ export const MissionSection = () => {
         <GlassCard>
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
             <div className="flex-grow">
+              {/* Section header always rendered */}
               <h2
                 className="text-3xl md:text-4xl font-light tracking-tightest font-sans text-black dark:text-white mb-2"
                 style={{ letterSpacing: "-0.07em" }}
               >
-                {buildAnimatedWords("Why NoctOWL ZERO?")}
+                {/* Render the heading NOT wrapped in 'gsap-word' */}
+                Why NoctOWL ZERO?
               </h2>
               <div
                 ref={textBlockRef}
