@@ -7,20 +7,20 @@ const OWL_IMAGE_URL =
 /**
  * Displays a full-screen, ominous, futuristic owl in the backdrop
  * behind all site content, with blur and blend mode for glassy/dark vibe.
+ * The owl is now more visible and clear while maintaining the glassy/dark theme.
  */
 export const OwlBackdrop: React.FC = () => (
   <div
     aria-hidden="true"
     className="pointer-events-none fixed inset-0 z-0 select-none"
     style={{
-      // subtle parallax on large screens
-      background: `radial-gradient(ellipse at 60% 22%, rgba(28,36,54,0.72) 0%, rgba(28,32,45,0.92) 62%, rgba(20,24,38,0.98) 100%), url(${OWL_IMAGE_URL}) center 12%/cover no-repeat`,
-      filter: "blur(6px) grayscale(20%) opacity(0.32) brightness(1.08)",
+      background: `radial-gradient(ellipse at 60% 20%, rgba(28,36,54,0.56) 0%, rgba(28,32,45,0.85) 65%, rgba(20,24,38,0.97) 100%), url(${OWL_IMAGE_URL}) center 12%/cover no-repeat`,
+      filter: "blur(3px) grayscale(10%) opacity(0.45) brightness(1.16)",
       mixBlendMode: "lighten",
       transition: "filter 0.7s cubic-bezier(.27,1,.43,1)"
     }}
   >
-    {/* Overlay for extra darkness/glass effect */}
-    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#151826]/60 to-[#100d1b]/90" />
+    {/* Stronger overlay for a crisper glass/dark effect, but still see owl */}
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#151826]/50 to-[#0b0914]/80" />
   </div>
 );
