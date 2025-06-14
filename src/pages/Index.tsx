@@ -8,6 +8,7 @@ import { MissionSection } from "@/components/MissionSection";
 import { WaitlistSection } from "@/components/WaitlistSection";
 import { Footer } from "@/components/Footer";
 import { OwlBackdrop } from "@/components/OwlBackdrop";
+import { TrustedBySection } from "@/components/TrustedBySection";
 
 const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,6 +36,8 @@ const Index = () => {
         }} />
         <MissionSection />
         <WaitlistSection />
+        {/* TrustedBy logo wall section before the footer */}
+        <TrustedBySection />
       </main>
       <Footer />
     </div>
