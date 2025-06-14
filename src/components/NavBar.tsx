@@ -1,11 +1,12 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Menu } from "lucide-react";
 import { NeumorphicButton } from "@/components/ui/NeumorphicButton";
 
 const NAV_LINKS = [
   { name: "Home", href: "#home" },
   { name: "Mission", href: "#mission" },
+  { name: "About", href: "#about" },
   { name: "Waitlist", href: "#waitlist" },
 ];
 

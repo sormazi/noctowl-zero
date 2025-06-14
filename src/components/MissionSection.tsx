@@ -1,3 +1,4 @@
+
 import React from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -94,34 +95,14 @@ export const MissionSection = () => (
           </div>
         </div>
         <div className="pt-4 pl-0 md:pl-12 flex-shrink-0 flex flex-col items-center">
-          {/* Official YouTube logo SVG styled for luxury/class */}
-          <span
+          <Youtube
+            size={44}
+            strokeWidth={2.3}
+            color="#fff"
+            fill="#FF0000"
+            className="transition-colors duration-200"
             aria-label="Discover"
-            className="flex items-center justify-center"
-            style={{ minHeight: 48 }}
-          >
-            {/* YouTube logo, color-adapted for theme */}
-            <svg
-              width="54"
-              height="38"
-              viewBox="0 0 54 38"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="drop-shadow-md"
-              style={{
-                display: "block",
-                filter: "drop-shadow(0 2px 10px #0008)",
-                borderRadius: 6,
-              }}
-            >
-              {/* Outer red shape */}
-              <rect x="0" y="0" width="54" height="38" rx="10" fill="#FF0000" />
-              {/* Play triangle, white and centered */}
-              <polygon points="22,11 40,19 22,27" fill="white" />
-              {/* Optional: Elegant outline for glass effect */}
-              <rect x="0.5" y="0.5" width="53" height="37" rx="9.5" fill="none" stroke="white" strokeOpacity="0.08" />
-            </svg>
-          </span>
+          />
           <span className="mt-2 text-xs font-light tracking-tight uppercase opacity-60 text-foreground">
             Discover
           </span>

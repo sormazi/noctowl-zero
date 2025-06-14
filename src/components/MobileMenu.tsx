@@ -10,6 +10,7 @@ interface MobileMenuProps {
 const NAV_LINKS = [
   { name: "Home", href: "#home" },
   { name: "Mission", href: "#mission" },
+  { name: "About", href: "#about" },
   { name: "Waitlist", href: "#waitlist" },
 ];
 

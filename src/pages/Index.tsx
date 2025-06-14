@@ -1,3 +1,4 @@
+
 // Homepage for NoctOWL ZERO, luxury LLM for finance
 
 import React, { useState, useEffect } from "react";
@@ -9,6 +10,7 @@ import { WaitlistSection } from "@/components/WaitlistSection";
 import { Footer } from "@/components/Footer";
 import { OwlBackdrop } from "@/components/OwlBackdrop";
 import { AsFeaturedInSection } from "@/components/TrustedBySection";
+import { AboutSection } from "@/components/AboutSection";
 
 const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,6 +37,7 @@ const Index = () => {
           document.getElementById("waitlist")?.scrollIntoView({behavior: "smooth"});
         }} />
         <MissionSection />
+        <AboutSection />
         <WaitlistSection />
         {/* As Featured In section before the footer */}
         <AsFeaturedInSection />
@@ -45,3 +48,4 @@ const Index = () => {
 };
 
 export default Index;
+
