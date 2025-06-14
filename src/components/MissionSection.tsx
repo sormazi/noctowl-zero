@@ -3,6 +3,7 @@ import React from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Youtube } from "lucide-react";
+import { NeumorphicButton } from "@/components/ui/NeumorphicButton";
 
 export const MissionSection = () => (
   <AnimatedSection as="section" id="mission" className="max-w-4xl mx-auto mt-24" delay={150}>
@@ -95,14 +96,19 @@ export const MissionSection = () => (
           </div>
         </div>
         <div className="pt-4 pl-0 md:pl-12 flex-shrink-0 flex flex-col items-center">
-          <Youtube
-            size={44}
-            strokeWidth={2.3}
-            color="#fff"
-            fill="#FF0000"
-            className="transition-colors duration-200"
-            aria-label="Discover"
-          />
+          <NeumorphicButton
+            as="a"
+            href="https://www.youtube.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-lg px-6 py-3 shadow-neu transition-all duration-200"
+            style={{
+              minWidth: 142,
+            }}
+          >
+            <Youtube size={28} strokeWidth={2} className="text-[#FF0000]" />
+            <span className="tracking-tight font-medium">Discover</span>
+          </NeumorphicButton>
           <span className="mt-2 text-xs font-light tracking-tight uppercase opacity-60 text-foreground">
             Discover
           </span>
@@ -111,3 +117,4 @@ export const MissionSection = () => (
     </GlassCard>
   </AnimatedSection>
 );
+
