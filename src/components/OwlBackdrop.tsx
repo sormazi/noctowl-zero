@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -30,20 +29,25 @@ export const OwlBackdrop: React.FC = () => {
         overwrite: true,
       });
 
-      // Animate owl SVG scaling smoothly with scroll progress
-      gsap.to(owlSvgRef.current, {
-        scale: 1.17,
-        transformOrigin: "50% 50%",
-        ease: "none",
-        overwrite: true,
-        clearProps: "transform",
-        scrollTrigger: {
-          trigger: document.documentElement,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true, // 1:1 with scroll progress, maximum smoothness
+      // Animate owl SVG scaling smoothly and proportionally with scroll progress
+      gsap.fromTo(owlSvgRef.current, 
+        {
+          scale: 0.85,
+          transformOrigin: "50% 50%",
         },
-      });
+        {
+          scale: 1.25,
+          transformOrigin: "50% 50%",
+          ease: "none",
+          overwrite: true,
+          scrollTrigger: {
+            trigger: document.documentElement,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1, // slightly smoothed for better performance
+          },
+        }
+      );
     });
     return () => ctx && ctx.revert();
   }, []);

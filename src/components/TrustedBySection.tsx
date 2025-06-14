@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import { TechCrunchLogo } from "./publication-logos/TechCrunchLogo";
@@ -87,7 +86,7 @@ export const AsFeaturedInSection = () => {
       onMouseLeave={handleMouseLeave}
     >
       <h3
-        className="text-center text-base md:text-lg font-light uppercase tracking-[.15em] text-white/40 mb-7"
+        className="text-center text-base md:text-lg font-light uppercase tracking-[.15em] text-white mb-7"
         style={{ letterSpacing: "0.16em" }}
       >
         AS FEATURED IN
@@ -118,4 +117,3 @@ export const AsFeaturedInSection = () => {
     </section>
   );
 };
-
