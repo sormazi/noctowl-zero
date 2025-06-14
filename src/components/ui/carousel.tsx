@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
@@ -96,13 +97,16 @@ const Carousel = React.forwardRef<
       [scrollPrev, scrollNext]
     )
 
+    // ---- Begin FIX: Always call setApi immediately when API instantiates ---- //
     React.useEffect(() => {
-      if (!api || !setApi) {
-        return
+      if (api && setApi) {
+        setApi(api)
+        // Debugging:
+        // eslint-disable-next-line no-console
+        console.log('[Carousel] API set', api)
       }
-
-      setApi(api)
     }, [api, setApi])
+    // ---- End FIX ---- //
 
     React.useEffect(() => {
       if (!api) {
