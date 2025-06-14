@@ -10,7 +10,7 @@ export const OwlEyesGlowOverlay: React.FC = () => (
   <div
     aria-hidden="true"
     className="pointer-events-none absolute inset-0 z-0 select-none"
-    style={{ mixBlendMode: "lighten" }} // blend the glow with card bg
+    style={{ mixBlendMode: "lighter" }} // blend the glow with card bg
   >
     {/* Left eye glow */}
     <div
@@ -42,3 +42,4 @@ export const OwlEyesGlowOverlay: React.FC = () => (
     />
   </div>
 );
+
