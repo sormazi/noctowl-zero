@@ -27,6 +27,7 @@ export const AboutSection = () => (
         background: "rgba(30,32,48,0.25)"
       }}
     >
+      {/* Only the owl's eye glow, no extra glows */}
       <OwlEyesGlowOverlay />
       <h2 className="text-xl xs:text-2xl md:text-3xl font-semibold mb-3 tracking-tight font-sans text-black dark:text-white" style={{letterSpacing:"-.05em"}}>
         About
