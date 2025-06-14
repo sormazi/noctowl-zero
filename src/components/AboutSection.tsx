@@ -10,7 +10,20 @@ export const AboutSection = () => (
     className="max-w-4xl mx-auto mt-16 md:mt-24 px-2 sm:px-4"
     delay={200}
   >
-    <GlassCard className="bg-[#23243a]/95 dark:bg-[#16171f]/95 px-3 py-4 sm:px-8 sm:py-8">
+    <GlassCard
+      className="
+        bg-[#23243a]/45 dark:bg-[#16171f]/40
+        backdrop-blur-2xl
+        px-3 py-4 sm:px-8 sm:py-8
+        shadow-glass
+        transition-all
+        duration-500
+        ring-1 ring-cyan-200/5
+      "
+      style={{
+        boxShadow: "0 8px 40px 0 rgba(97,239,255,0.13), 0 2px 12px 0 rgba(18,32,69,0.10)",
+      }}
+    >
       <h2 className="text-xl xs:text-2xl md:text-3xl font-semibold mb-3 tracking-tight font-sans text-black dark:text-white" style={{letterSpacing:"-.05em"}}>
         About
       </h2>
@@ -20,3 +33,4 @@ export const AboutSection = () => (
     </GlassCard>
   </AnimatedSection>
 );
+

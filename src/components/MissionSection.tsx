@@ -42,7 +42,20 @@ export const MissionSection = () => {
     <AnimatedSection as="section" id="mission" className="w-full mt-16 md:mt-24 relative" delay={150}>
       <div className="w-full relative left-0 right-0">
         <div className="max-w-4xl mx-auto px-2 sm:px-4">
-          <GlassCard className="bg-[#23243a]/95 dark:bg-[#16171f]/95 px-3 py-4 sm:px-8 sm:py-8">
+          <GlassCard
+            className="
+              bg-[#23243a]/45 dark:bg-[#16171f]/40
+              backdrop-blur-2xl
+              px-3 py-4 sm:px-8 sm:py-8
+              shadow-glass
+              transition-all
+              duration-500
+              ring-1 ring-cyan-200/5
+              "
+            style={{
+              boxShadow: "0 8px 40px 0 rgba(97,239,255,0.13), 0 2px 12px 0 rgba(18,32,69,0.10)",
+            }}
+          >
             <div className="flex flex-col md:flex-row items-center gap-5 md:gap-12">
               <div className="flex-grow w-full">
                 <h2
@@ -65,3 +78,4 @@ export const MissionSection = () => {
     </AnimatedSection>
   );
 };
+
