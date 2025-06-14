@@ -1,19 +1,21 @@
 
 import React, { useRef, useEffect, useState } from "react";
 
-interface AnimatedSectionProps {
+type AnimatedSectionProps<T extends React.ElementType> = {
+  as?: T;
   children: React.ReactNode;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
   delay?: number;
-}
+} & React.ComponentPropsWithoutRef<T>;
 
-export const AnimatedSection = ({
+export const AnimatedSection = <T extends React.ElementType = "section">({
+  as,
   children,
   className = "",
-  as: Tag = "section",
   delay = 0,
-}: AnimatedSectionProps) => {
+  ...rest
+}: AnimatedSectionProps<T>) => {
+  const Tag = (as || "section") as React.ElementType;
   const ref = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -41,10 +43,10 @@ export const AnimatedSection = ({
         will-change-transform
         ${className}
         `}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ transitionDelay: `${delay}ms`, ...(rest.style || {}) }}
+      {...rest}
     >
       {children}
     </Tag>
   );
 };
-
