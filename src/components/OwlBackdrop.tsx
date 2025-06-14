@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,23 +15,9 @@ export const OwlBackdrop: React.FC = () => {
   useEffect(() => {
     let ctx: gsap.Context | undefined;
     ctx = gsap.context(() => {
-      // Animate eyes and glow as a one-time effect at scroll start (not scroll-scrubbed)
-      gsap.to([leftGlowRef.current, rightGlowRef.current], {
-        opacity: 1,
-        attr: { fillOpacity: 0.9 },
-        duration: 1,
-        ease: "power1.out",
-        overwrite: true,
-      });
-      gsap.to([leftEyeRef.current, rightEyeRef.current], {
-        fill: "#61efff",
-        duration: 1.1,
-        ease: "power1.out",
-        overwrite: true,
-      });
-
-      // Animate owl SVG scaling smoothly and proportionally with scroll progress
-      gsap.fromTo(owlSvgRef.current, 
+      // Animate owl SVG scaling smoothly with scroll progress
+      gsap.fromTo(
+        owlSvgRef.current,
         {
           scale: 0.85,
           transformOrigin: "50% 50%",
@@ -44,10 +31,68 @@ export const OwlBackdrop: React.FC = () => {
             trigger: document.documentElement,
             start: "top top",
             end: "bottom bottom",
-            scrub: 1, // slightly smoothed for better performance
+            scrub: 1,
+            // Eyes/Glow will be updated in onUpdate below,
           },
         }
       );
+
+      // Dynamically animate eyes and glow with scroll progress
+      let eyeFillFrom = [16, 239, 255]; // #10efff blue
+      let eyeFillTo = [97, 239, 255];   // #61efff brighter blue
+
+      // Picked a subtle blue for off, and a bright cyan for on
+      let darkEyeColor = "#10151c";
+      let lightEyeColor = "#61efff";
+
+      ScrollTrigger.create({
+        trigger: document.documentElement,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1,
+        onUpdate: self => {
+          const progress = self.progress;
+
+          // Eye fill color transitions
+          // Interpolate RGB values between darkEyeColor and lightEyeColor according to progress
+          function lerp(a: number, b: number, t: number) {
+            return Math.round(a + (b - a) * t);
+          }
+          // #10151c -> #61efff
+          const fillR = lerp(16, 97, progress);
+          const fillG = lerp(21, 239, progress);
+          const fillB = lerp(28, 255, progress);
+          const eyeColor = `rgb(${fillR},${fillG},${fillB})`;
+          // set fill for both eyes
+          if (leftEyeRef.current) leftEyeRef.current.setAttribute("fill", eyeColor);
+          if (rightEyeRef.current) rightEyeRef.current.setAttribute("fill", eyeColor);
+
+          // The glow's opacity and fillOpacity both increase with progress
+          const glowOpacity = 0.25 + 0.75 * progress; // from 0.25 to 1.0
+          const glowFillOpacity = 0.35 + 0.55 * progress; // from 0.35 to 0.9
+
+          if (leftGlowRef.current) {
+            leftGlowRef.current.style.opacity = String(glowOpacity);
+            leftGlowRef.current.setAttribute("fill-opacity", String(glowFillOpacity));
+          }
+          if (rightGlowRef.current) {
+            rightGlowRef.current.style.opacity = String(glowOpacity);
+            rightGlowRef.current.setAttribute("fill-opacity", String(glowFillOpacity));
+          }
+        }
+      });
+
+      // Eyes start in their "off" color and opacity
+      if (leftEyeRef.current) leftEyeRef.current.setAttribute("fill", darkEyeColor);
+      if (rightEyeRef.current) rightEyeRef.current.setAttribute("fill", darkEyeColor);
+      if (leftGlowRef.current) {
+        leftGlowRef.current.style.opacity = String(0.25);
+        leftGlowRef.current.setAttribute("fill-opacity", "0.35");
+      }
+      if (rightGlowRef.current) {
+        rightGlowRef.current.style.opacity = String(0.25);
+        rightGlowRef.current.setAttribute("fill-opacity", "0.35");
+      }
     });
     return () => ctx && ctx.revert();
   }, []);
