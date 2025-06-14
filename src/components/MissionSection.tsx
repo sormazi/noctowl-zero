@@ -94,11 +94,12 @@ export const MissionSection = () => (
           </div>
         </div>
         <div className="pt-4 pl-0 md:pl-12 flex-shrink-0 flex flex-col items-center">
-          {/* Remove background, border, circle — just the icon, bolder and bigger */}
           <Youtube
             size={44}
             strokeWidth={2.3}
-            className="text-foreground dark:text-card-foreground transition-colors duration-200"
+            color="#fff"
+            fill="#FF0000"
+            className="transition-colors duration-200"
             aria-label="Discover"
           />
           <span className="mt-2 text-xs font-light tracking-tight uppercase opacity-60">Discover</span>
