@@ -44,7 +44,7 @@ export const WaitlistSection = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={submitted}
-          className="flex-1 h-12 font-light tracking-tightest bg-white/90 backdrop-blur-md"
+          className="flex-1 h-12 font-light tracking-tightest bg-white/90 backdrop-blur-md text-black"
           required
         />
         <NeumorphicButton
