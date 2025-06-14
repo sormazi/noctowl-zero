@@ -8,7 +8,7 @@ interface ScrollTypingEffectProps {
   text: string;
   className?: string;
   typingDelay?: number;    // ms per char when typing
-  deletingDelay?: number;  // ms per char when deleting
+  deletingDelay?: number;  // ms per char when deleting (unused with new behavior)
   fontClassName?: string;  // for children styling
 }
 
@@ -16,34 +16,30 @@ export const ScrollTypingEffect: React.FC<ScrollTypingEffectProps> = ({
   text,
   className = "",
   typingDelay = 16,
-  deletingDelay = 8,
+  // deletingDelay, // no longer deleting, keep for prop signature
   fontClassName = "",
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [displayedLength, setDisplayedLength] = useState(0);
-  const progressRef = useRef(0);
-
-  // Keep a ref of the animation, so we only run one at a time
+  const maxLengthReached = useRef(0);
   const animationRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    let prevProgress = 0;
     let tl: ScrollTrigger;
 
     const onUpdate = (self: ScrollTrigger) => {
       const progress = self.progress;
-      progressRef.current = progress;
-
       // Map scroll progress [0,1] to number of visible characters [0, text.length]
       const nextLength = Math.round(progress * text.length);
-
-      if (nextLength === displayedLength) return;
-      // For silky smoothness: instead of instantly jumping to nextLength, animate toward it
-      animateToTargetLength(nextLength);
-      prevProgress = progress;
+      // Store the farthest the user has ever scrolled
+      if (nextLength > maxLengthReached.current) {
+        maxLengthReached.current = nextLength;
+        animateToTargetLength(nextLength);
+      }
+      // Don't delete text if scrolling up; keep displayedLength at max reached
     };
 
     function animateToTargetLength(target: number) {
@@ -51,18 +47,15 @@ export const ScrollTypingEffect: React.FC<ScrollTypingEffectProps> = ({
       if (displayedLength === target) return;
 
       let next = displayedLength;
-      const typing = target > displayedLength;
-      const step = typing ? 1 : -1;
-      const duration = typing ? typingDelay : deletingDelay;
 
       function run() {
-        next += step;
+        next += 1;
         setDisplayedLength(next);
-        if (next !== target) {
-          animationRef.current = setTimeout(run, duration);
+        if (next < target) {
+          animationRef.current = setTimeout(run, typingDelay);
         }
       }
-      animationRef.current = setTimeout(run, duration);
+      animationRef.current = setTimeout(run, typingDelay);
     }
 
     tl = ScrollTrigger.create({
@@ -74,20 +67,28 @@ export const ScrollTypingEffect: React.FC<ScrollTypingEffectProps> = ({
     });
 
     return () => {
-      if(tl) tl.kill();
-      if(animationRef.current) clearTimeout(animationRef.current);
+      if (tl) tl.kill();
+      if (animationRef.current) clearTimeout(animationRef.current);
     };
     // eslint-disable-next-line
   }, [text]);
 
-  // Ensure we never display more than text.length
-  const safeLen = Math.max(0, Math.min(displayedLength, text.length));
+  // Ensure we never display more than text.length or more than maxLengthReached
+  const safeLen = Math.max(
+    0,
+    Math.min(displayedLength, text.length, maxLengthReached.current)
+  );
 
   return (
     <div ref={ref} className={className}>
       <span className={fontClassName}>
         {text.slice(0, safeLen)}
-        <span className="inline-block w-4 h-6 align-middle animate-pulse bg-white/70 dark:bg-white/50 ml-0.5 rounded" style={{visibility: safeLen < text.length ? "visible" : "hidden"}}></span>
+        <span
+          className="inline-block w-4 h-6 align-middle animate-pulse bg-white/70 dark:bg-white/50 ml-0.5 rounded"
+          style={{
+            visibility: safeLen < text.length ? "visible" : "hidden",
+          }}
+        ></span>
       </span>
     </div>
   );
