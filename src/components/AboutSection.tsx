@@ -13,17 +13,18 @@ export const AboutSection = () => (
   >
     <GlassCard
       className="
-        bg-[#23243a]/20 dark:bg-[#16171f]/20
+        bg-white/10 dark:bg-[#16171f]/10
         relative
-        backdrop-blur-2xl
+        backdrop-blur-[10px]
         px-3 py-4 sm:px-8 sm:py-8
-        shadow-glass
+        shadow-none
         transition-all
         duration-500
         ring-1 ring-cyan-200/5
       "
       style={{
-        boxShadow: "0 8px 40px 0 rgba(97,239,255,0.13), 0 2px 12px 0 rgba(18,32,69,0.10)",
+        boxShadow: "0 8px 32px 0 rgba(31,38,135,0.09)", // much softer shadow, more 'frosty'
+        border: "1.5px solid rgba(180,242,255,0.08)"
       }}
     >
       <OwlEyesGlowOverlay />
