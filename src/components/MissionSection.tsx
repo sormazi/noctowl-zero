@@ -59,6 +59,7 @@ export const MissionSection = () => {
               border: "1.5px solid rgba(180,242,255,0.08)"
             }}
           >
+            {/* Only the owl's eye glow overlay remains */}
             <OwlEyesGlowOverlay />
             <div className="flex flex-col md:flex-row items-center gap-5 md:gap-12">
               <div className="flex-grow w-full">
@@ -82,3 +83,4 @@ export const MissionSection = () => {
     </AnimatedSection>
   );
 };
+
