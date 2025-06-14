@@ -21,9 +21,9 @@ export const HeroSection = ({ onWaitlist }: { onWaitlist: () => void }) => {
         <span className="block mt-2 text-base font-light opacity-70 tracking-tightest text-white/70" style={{ fontSize: "1.08rem" }}>
           by <span className="align-sub text-sm opacity-80 font-medium">QQ Labs</span>
         </span>
-        {/* Impactful statement added here */}
+        {/* Impactful statement updated here */}
         <div className="mt-8 mb-3">
-          <span className="block text-[clamp(1.7rem,3vw,2.5rem)] font-extrabold text-white tracking-tightest drop-shadow-sm">
+          <span className="block text-[clamp(1.2rem,2.1vw,2rem)] font-extrabold text-white tracking-tightest drop-shadow-sm">
             Markets sleep. NoctOwl doesn’t.
           </span>
         </div>
