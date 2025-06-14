@@ -1,8 +1,8 @@
+
 import React from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Youtube } from "lucide-react";
-import { LogoCarousel } from "@/components/LogoCarousel";
 
 export const MissionSection = () => (
   <AnimatedSection as="section" id="mission" className="max-w-4xl mx-auto mt-24" delay={150}>
@@ -13,7 +13,6 @@ export const MissionSection = () => (
               style={{ letterSpacing: "-0.07em" }}>
             Why <span className="font-bold">NoctOWL ZERO?</span>
           </h2>
-          <LogoCarousel />
           <div className="mt-3 flex flex-col text-black/80 dark:text-white/80 text-lg space-y-7 font-light max-w-2xl">
             <div>
               <span className="text-xl md:text-2xl font-semibold leading-relaxed select-none">🧠 LLM-Powered Valuation</span>
