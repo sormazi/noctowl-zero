@@ -2,6 +2,7 @@
 import React from "react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { OwlEyesGlowOverlay } from "./OwlEyesGlowOverlay";
 
 export const AboutSection = () => (
   <AnimatedSection
@@ -12,7 +13,8 @@ export const AboutSection = () => (
   >
     <GlassCard
       className="
-        bg-[#23243a]/45 dark:bg-[#16171f]/40
+        bg-[#23243a]/20 dark:bg-[#16171f]/20
+        relative
         backdrop-blur-2xl
         px-3 py-4 sm:px-8 sm:py-8
         shadow-glass
@@ -24,6 +26,7 @@ export const AboutSection = () => (
         boxShadow: "0 8px 40px 0 rgba(97,239,255,0.13), 0 2px 12px 0 rgba(18,32,69,0.10)",
       }}
     >
+      <OwlEyesGlowOverlay />
       <h2 className="text-xl xs:text-2xl md:text-3xl font-semibold mb-3 tracking-tight font-sans text-black dark:text-white" style={{letterSpacing:"-.05em"}}>
         About
       </h2>
@@ -33,4 +36,3 @@ export const AboutSection = () => (
     </GlassCard>
   </AnimatedSection>
 );
-
