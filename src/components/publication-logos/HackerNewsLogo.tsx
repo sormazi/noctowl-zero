@@ -1,15 +1,10 @@
 
 import * as React from "react";
 
+// Monochrome HN logo, usually orange, here grayscale
 export const HackerNewsLogo = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    width={38}
-    height={32}
-    viewBox="0 0 38 32"
-    fill="none"
-    {...props}
-  >
-    <rect width={38} height={32} rx={7} fill="#FF6600" />
+  <svg width={50} height={32} viewBox="0 0 50 32" fill="none" aria-label="Hacker News" {...props}>
+    <rect width="50" height="32" rx="7" fill="#fff" opacity="0.13"/>
     <text
       x="50%"
       y="60%"
@@ -20,9 +15,9 @@ export const HackerNewsLogo = (props: React.SVGProps<SVGSVGElement>) => (
       fontSize="1.2em"
       alignmentBaseline="middle"
       letterSpacing="0.04em"
+      opacity="0.93"
     >
       HN
     </text>
   </svg>
 );
-

@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import { TechCrunchLogo } from "./publication-logos/TechCrunchLogo";
 import { FinextraLogo } from "./publication-logos/FinextraLogo";
 import { A16zLogo } from "./publication-logos/A16zLogo";
@@ -46,18 +47,25 @@ export const AsFeaturedInSection = () => (
     >
       AS FEATURED IN
     </h3>
-    <div className="flex flex-wrap justify-center items-center gap-7 sm:gap-10 md:gap-14 px-1">
-      {publications.map(({ name, Logo }) => (
-        <span
-          key={name}
-          className="flex justify-center items-center opacity-95 hover:opacity-100 transition-opacity"
-          style={{ minWidth: 54, minHeight: 32 }}
-          aria-label={name}
-        >
-          <Logo style={{ display: "block", maxWidth: 130, height: 32 }} />
-        </span>
-      ))}
-    </div>
+    <Carousel
+      opts={{
+        loop: true,
+        align: "center",
+      }}
+      className="relative"
+    >
+      <CarouselContent className="items-center h-16">
+        {publications.map(({ name, Logo }, idx) => (
+          <CarouselItem
+            key={name}
+            className="basis-1/2 sm:basis-1/3 md:basis-1/6 flex justify-center"
+          >
+            <div className="flex justify-center items-center min-w-[56px] min-h-[40px] rounded-[5px] px-2 mx-auto bg-transparent hover-scale transition-all">
+              <Logo style={{ display: "block", maxWidth: 130, height: 32 }} />
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+    </Carousel>
   </section>
 );
-
