@@ -13,15 +13,41 @@ export const MissionSection = () => (
               style={{ letterSpacing: "-0.07em" }}>
             Why <span className="font-bold">NoctOWL ZERO?</span>
           </h2>
-          <p className="mt-3 text-black/70 dark:text-white/70 opacity-80 font-light text-lg leading-tight max-w-2xl">
-            <span className="block mb-2">
-             Our mission is to democratize access to advanced financial AI. 
-            </span>
-            We believe valuation and financial reasoning are core to the world's progress. 
-            <span className="block mt-2">
-            By building a transparent, reliable, and secure LLM specializing in finance, we're enabling professionals and innovators worldwide to unlock value, make better decisions, and drive the future economy.
-            </span>
-          </p>
+          <div className="mt-3 flex flex-col text-black/80 dark:text-white/80 text-lg space-y-7 font-light max-w-2xl">
+            <div>
+              <span className="text-xl md:text-2xl font-semibold leading-relaxed select-none">🧠 LLM-Powered Valuation</span>
+              <div className="mt-1 text-base font-normal opacity-90">
+                Upload a 10-K or earnings call → get full valuation models, comps, DCFs, and red flag detection in seconds.
+              </div>
+            </div>
+            <div>
+              <span className="text-xl md:text-2xl font-semibold leading-relaxed select-none">📉 Quant &amp; HFT Intelligence</span>
+              <div className="mt-1 text-base font-normal opacity-90">
+                Parse time series, detect anomaly clusters, generate synthetic alpha strategies.<br />
+                <span className="italic">Ask:</span> “Which tickers have highest abnormal volume/volatility divergence this week?”
+              </div>
+            </div>
+            <div>
+              <span className="text-xl md:text-2xl font-semibold leading-relaxed select-none">📰 Macro &amp; Earnings Analyst Mode</span>
+              <div className="mt-1 text-base font-normal opacity-90">
+                <span className="italic">Ask:</span>
+                <ul className="list-disc ml-6 mt-1 space-y-1">
+                  <li>
+                    “How did Powell’s last 3 statements shift bond yields?”
+                  </li>
+                  <li>
+                    “Summarize NVDA’s last 5 calls into a 30-second briefing.”
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <span className="text-xl md:text-2xl font-semibold leading-relaxed select-none">🐍 API-First for Traders</span>
+              <div className="mt-1 text-base font-normal opacity-90">
+                Integrate directly with your stack — use our endpoints for signal generation, portfolio commentary, or agentic trade assistants.
+              </div>
+            </div>
+          </div>
         </div>
         <div className="pt-4 pl-0 md:pl-12 flex-shrink-0 flex flex-col items-center">
           <span className="bg-gradient-to-br from-cyan-200 to-cyan-500 rounded-full p-5 shadow-neu shadow-cyan-300/20">
