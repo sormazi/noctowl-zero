@@ -1,4 +1,3 @@
-
 import React from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -95,25 +94,7 @@ export const MissionSection = () => (
             </div>
           </div>
         </div>
-        <div className="pt-4 pl-0 md:pl-12 flex-shrink-0 flex flex-col items-center">
-          <NeumorphicButton
-            className="flex items-center gap-2 text-lg px-6 py-3 shadow-neu transition-all duration-200"
-            style={{
-              minWidth: 142,
-            }}
-            onClick={() => {
-              window.open("https://www.youtube.com/", "_blank", "noopener,noreferrer");
-            }}
-          >
-            <Youtube size={28} strokeWidth={2} className="text-[#FF0000]" />
-            <span className="tracking-tight font-medium">Discover</span>
-          </NeumorphicButton>
-          <span className="mt-2 text-xs font-light tracking-tight uppercase opacity-60 text-foreground">
-            Discover
-          </span>
-        </div>
       </div>
     </GlassCard>
   </AnimatedSection>
 );
-
