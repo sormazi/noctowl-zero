@@ -25,7 +25,7 @@ export const HeroSection = ({ onWaitlist }: { onWaitlist: () => void }) => {
           style={{ opacity: 0.75 }}
         >
           NoctOwl ZERO is the first foundational LLM Agent for modern finance.<br />
-          Deploy market and region-agnostic AI agents that read filings, scan option-flow, and decode releases and papers— then generate and execute strategy before the street can react
+          Deploy market-agnostic region-agnostic AI agents that can simultaneously read filings, analyze option-flow, decode releases and synthesize research papers into pure strategy— then generate AND execute before the street can react
         </p>
         <div className="flex flex-col-reverse md:flex-row gap-3 md:gap-7 justify-center mt-9">
           <NeumorphicButton onClick={onWaitlist} className="w-full md:w-auto">
