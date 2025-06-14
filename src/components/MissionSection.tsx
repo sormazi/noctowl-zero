@@ -1,4 +1,3 @@
-
 import React from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -59,8 +58,7 @@ export const MissionSection = () => {
               background: "rgba(30,32,48,0.25)"
             }}
           >
-            {/* Only the owl's eye glow, no extra glows */}
-            <OwlEyesGlowOverlay />
+            {/* OwlEyesGlowOverlay removed per user request */}
             <div className="flex flex-col md:flex-row items-center gap-5 md:gap-12">
               <div className="flex-grow w-full">
                 <h2
