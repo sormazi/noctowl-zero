@@ -2,16 +2,49 @@
 import React, { useRef } from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { TypingEffect } from "@/components/TypingEffect";
+import { ScrollTypingEffect } from "@/components/ScrollTypingEffect";
+
+const featureText = `
+🧠 LLM-Driven Valuation Engine
+
+Ingest 10-Ks, earnings transcripts, or investor presentations and receive structured outputs:
+• Full-stack financial models (DCF, LBO, comparables)
+• Risk flags and accounting anomalies
+• Sector-relative KPI benchmarking
+• Embedded management sentiment analysis
+
+────────────────────────────
+
+📉 Quantitative & HFT Intelligence Layer
+
+Run AI-assisted analytics over time-series and market microstructure data to:
+• Detect high-sigma volatility and volume dislocations
+• Identify alpha clusters and structural inefficiencies
+• Auto-generate and backtest synthetic trading strategies
+e.g., "Scan for tickers with option-implied divergence vs realized volatility over the last 3 sessions"
+
+────────────────────────────
+
+📰 Macro + Earnings Analysis Mode
+
+Deploy AI agents capable of:
+• Parsing monetary policy signals across global central banks
+• Quantifying forward guidance shifts in tone and semantics
+• Compressing multi-quarter earnings calls into narrative-rich, KPI-aware executive summaries
+Ask: "Map Powell's forward tone against 2Y yield movements" or "Extract key margin commentary from NVDA Q1–Q5"
+
+────────────────────────────
+
+🐍 API-First Architecture for Trading Systems
+
+Integrate seamlessly with internal quant and trading infra:
+• RESTful and streaming endpoints for signal retrieval
+• Support for JSON, protobuf, and model-chaining workflows
+• Real-time event-driven triggers for alerts, trades, and commentary
+• Modular deployment: on-prem, cloud-native, or hybrid execution
+`;
 
 export const MissionSection = () => {
-  const textBlockRef = useRef<HTMLDivElement>(null);
-
-  const buildAnimatedWords = (text: string) =>
-    text.split(" ").map((word, idx) => (
-      <span key={idx} className="inline-block">{word}&nbsp;</span>
-    ));
-
   return (
     <AnimatedSection as="section" id="mission" className="w-full mt-24 relative" delay={150}>
       <div className="w-full relative left-0 right-0">
@@ -26,77 +59,13 @@ export const MissionSection = () => {
                 >
                   Why NoctOWL ZERO?
                 </h2>
-                <TypingEffect className="mt-4 flex flex-col text-black/80 dark:text-white/80 text-lg font-light max-w-2xl">
-                  <div className="mb-7">
-                    <span className="text-xl md:text-2xl font-semibold leading-relaxed select-none">
-                      🧠 LLM-Driven Valuation Engine
-                    </span>
-                    <p className="mt-2 text-base font-normal opacity-90">
-                      Ingest 10-Ks, earnings transcripts, or investor presentations and receive structured outputs:
-                    </p>
-                    <ul className="list-disc ml-6 mt-2 space-y-1.5 text-base font-normal">
-                      <li>Full-stack financial models (DCF, LBO, comparables)</li>
-                      <li>Risk flags and accounting anomalies</li>
-                      <li>Sector-relative KPI benchmarking</li>
-                      <li>Embedded management sentiment analysis</li>
-                    </ul>
-                  </div>
-                  <div className="flex items-center justify-center my-2">
-                    <span className="flex-grow border-t border-dashed border-white/25 dark:border-black/10" />
-                  </div>
-                  <div className="mb-6 mt-1">
-                    <span className="text-xl md:text-2xl font-semibold leading-relaxed select-none">
-                      📉 Quantitative & HFT Intelligence Layer
-                    </span>
-                    <p className="mt-2 text-base font-normal opacity-90">
-                      Run AI-assisted analytics over time-series and market microstructure data to:
-                    </p>
-                    <ul className="list-disc ml-6 mt-2 space-y-1.5 text-base font-normal">
-                      <li>Detect high-sigma volatility and volume dislocations</li>
-                      <li>Identify alpha clusters and structural inefficiencies</li>
-                      <li>Auto-generate and backtest synthetic trading strategies</li>
-                    </ul>
-                    <p className="italic text-[0.98rem] mt-3">
-                      e.g., "Scan for tickers with option-implied divergence vs realized volatility over the last 3 sessions"
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-center my-2">
-                    <span className="flex-grow border-t border-dashed border-white/25 dark:border-black/10" />
-                  </div>
-                  <div className="mb-6 mt-1">
-                    <span className="text-xl md:text-2xl font-semibold leading-relaxed select-none">
-                      📰 Macro + Earnings Analysis Mode
-                    </span>
-                    <p className="mt-2 text-base font-normal opacity-90">
-                      Deploy AI agents capable of:
-                    </p>
-                    <ul className="list-disc ml-6 mt-2 space-y-1.5 text-base font-normal">
-                      <li>Parsing monetary policy signals across global central banks</li>
-                      <li>Quantifying forward guidance shifts in tone and semantics</li>
-                      <li>Compressing multi-quarter earnings calls into narrative-rich, KPI-aware executive summaries</li>
-                    </ul>
-                    <p className="italic text-[0.98rem] mt-3">
-                      Ask: "Map Powell's forward tone against 2Y yield movements" or "Extract key margin commentary from NVDA Q1–Q5"
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-center my-2">
-                    <span className="flex-grow border-t border-dashed border-white/25 dark:border-black/10" />
-                  </div>
-                  <div className="mb-2 mt-1">
-                    <span className="text-xl md:text-2xl font-semibold leading-relaxed select-none">
-                      🐍 API-First Architecture for Trading Systems
-                    </span>
-                    <p className="mt-2 text-base font-normal opacity-90">
-                      Integrate seamlessly with internal quant and trading infra:
-                    </p>
-                    <ul className="list-disc ml-6 mt-2 space-y-1.5 text-base font-normal">
-                      <li>RESTful and streaming endpoints for signal retrieval</li>
-                      <li>Support for JSON, protobuf, and model-chaining workflows</li>
-                      <li>Real-time event-driven triggers for alerts, trades, and commentary</li>
-                      <li>Modular deployment: on-prem, cloud-native, or hybrid execution</li>
-                    </ul>
-                  </div>
-                </TypingEffect>
+                <ScrollTypingEffect
+                  text={featureText.trim()}
+                  className="mt-4 flex flex-col text-black/80 dark:text-white/80 text-lg font-light max-w-2xl"
+                  fontClassName="whitespace-pre-line"
+                  typingDelay={12}
+                  deletingDelay={7}
+                />
               </div>
             </div>
           </GlassCard>

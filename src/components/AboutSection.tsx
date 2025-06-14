@@ -16,7 +16,7 @@ export const AboutSection = () => (
         About
       </h2>
       <p className="text-base md:text-lg font-light text-black/80 dark:text-white/80">
-        We are a team of Harvard-trained finance and technology professionals, driven by a shared mission: to help you build intelligent agents that are optimized for precision, speed, and financial nuance. Our solutions are designed to integrate seamlessly into your existing infrastructure—so you can focus entirely on generating alpha, while we handle the rest.
+        We are a team of Harvard-grads with backgrounds in technology, economics and finance, driven by a shared mission: to help you build intelligent agents that are optimized for precision, speed, and financial nuance. Our solutions are designed to integrate seamlessly into your existing infrastructure—so you can focus entirely on generating alpha, while we handle the rest.
       </p>
     </GlassCard>
   </AnimatedSection>
