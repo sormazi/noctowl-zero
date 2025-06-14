@@ -32,7 +32,7 @@ const Index = () => {
       {/* Content overlays backdrop */}
       <NavBar onOpenMenu={() => setMenuOpen(true)} />
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
-      <main className="mx-auto max-w-5xl px-4 pt-28 pb-12">
+      <main className="mx-auto max-w-5xl w-full px-1.5 sm:px-4 pt-28 pb-12 min-h-screen">
         <HeroSection onWaitlist={() => {
           document.getElementById("waitlist")?.scrollIntoView({behavior: "smooth"});
         }} />
@@ -48,4 +48,3 @@ const Index = () => {
 };
 
 export default Index;
-

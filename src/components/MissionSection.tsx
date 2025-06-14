@@ -45,21 +45,21 @@ Integrate seamlessly with internal quant and trading infra:
 
 export const MissionSection = () => {
   return (
-    <AnimatedSection as="section" id="mission" className="w-full mt-24 relative" delay={150}>
+    <AnimatedSection as="section" id="mission" className="w-full mt-16 md:mt-24 relative" delay={150}>
       <div className="w-full relative left-0 right-0">
-        <div className="max-w-4xl mx-auto px-4">
-          <GlassCard className="bg-[#23243a]/95 dark:bg-[#16171f]/95">
-            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
-              <div className="flex-grow">
+        <div className="max-w-4xl mx-auto px-2 sm:px-4">
+          <GlassCard className="bg-[#23243a]/95 dark:bg-[#16171f]/95 px-3 py-4 sm:px-8 sm:py-8">
+            <div className="flex flex-col md:flex-row items-center gap-5 md:gap-12">
+              <div className="flex-grow w-full">
                 <h2
-                  className="text-3xl md:text-4xl font-light tracking-tightest font-sans text-black dark:text-white mb-2"
+                  className="text-2xl xs:text-3xl md:text-4xl font-light tracking-tightest font-sans text-black dark:text-white mb-2"
                   style={{ letterSpacing: "-0.07em" }}
                 >
                   Why NoctOWL ZERO?
                 </h2>
                 <pre
-                  className="mt-4 flex flex-col text-black/80 dark:text-white/80 text-lg font-light max-w-2xl whitespace-pre-line"
-                  style={{ fontFamily: 'inherit' }}
+                  className="mt-4 flex flex-col text-black/80 dark:text-white/80 text-base xs:text-lg md:text-lg font-light w-full max-w-full whitespace-pre-line leading-relaxed"
+                  style={{ fontFamily: 'inherit', maxWidth: '100%' }}
                 >
                   {featureText.trim()}
                 </pre>
@@ -71,4 +71,3 @@ export const MissionSection = () => {
     </AnimatedSection>
   );
 };
-
