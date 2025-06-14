@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -80,11 +79,8 @@ export const OwlBackdrop: React.FC = () => {
         viewBox="0 0 620 390"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        // Removed: left-1/2, -translate-x-1/2 - these were moving the anchor for scaling!
-        className="absolute opacity-40 md:opacity-55 xl:opacity-65 top-8 md:top-14 transition-all duration-700"
+        className="absolute opacity-40 md:opacity-55 xl:opacity-65 left-1/2 top-8 md:top-14 -translate-x-1/2 transition-all duration-700"
         style={{
-          left: "50%",
-          transform: "translateX(-50%)", // only horizontal center (NOT scale!) for visual layout
           filter:
             "drop-shadow(0 12px 48px #1c243665) blur(0.5px)",
           maxWidth: "90vw",
@@ -138,4 +134,3 @@ export const OwlBackdrop: React.FC = () => {
     </div>
   );
 };
-
