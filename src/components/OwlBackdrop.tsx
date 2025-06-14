@@ -1,15 +1,10 @@
+
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * Minimalistic, ominous owl SVG background for the site.
- * Uses glassy gradients and geometric lines for a futuristic touch.
- * Owl's eyes now light up gradually as user scrolls down.
- * Owl SVG scales upward as you scroll down, and downward as you scroll up.
- */
 export const OwlBackdrop: React.FC = () => {
   const leftEyeRef = useRef<SVGEllipseElement>(null);
   const rightEyeRef = useRef<SVGEllipseElement>(null);
@@ -20,7 +15,6 @@ export const OwlBackdrop: React.FC = () => {
   useEffect(() => {
     let ctx: gsap.Context | undefined;
     ctx = gsap.context(() => {
-      // One timeline so all effect (eyes, glow, scaling) are in sync
       gsap.timeline({
         scrollTrigger: {
           trigger: "#home",
@@ -48,13 +42,16 @@ export const OwlBackdrop: React.FC = () => {
           },
           0
         )
+        // Ensure ONLY scale is animated (scale 1 -> 1.17), with consistent origin (center)
         .to(
           owlSvgRef.current,
           {
             scale: 1.17,
-            transformOrigin: "50% 50%", // center of the SVG
+            transformOrigin: "50% 50%",
             duration: 1.15,
             ease: "power1.out",
+            overwrite: true,
+            clearProps: "transform", // ensures GSAP manages the transform
           },
           0
         );
@@ -85,6 +82,7 @@ export const OwlBackdrop: React.FC = () => {
             "drop-shadow(0 12px 48px #1c243665) blur(0.5px)",
           maxWidth: "90vw",
           minWidth: 310,
+          // Remove extra transforms, let GSAP manage all scaling and transforms
         }}
       >
         {/* Face shape */}
