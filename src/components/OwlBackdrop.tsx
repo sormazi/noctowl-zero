@@ -15,22 +15,22 @@ export const OwlBackdrop: React.FC = () => {
   useEffect(() => {
     let ctx: gsap.Context | undefined;
     ctx = gsap.context(() => {
-      // Animate all effects in sync, but scale now follows full page scroll
+      // Eyes and glows animate instantly (at scroll start), only scale follows scroll progress
       gsap.timeline({
         scrollTrigger: {
-          trigger: document.documentElement, // Use the root element for total page scroll
+          trigger: document.documentElement,
           start: "top top",
           end: "bottom bottom",
-          scrub: 0.7,
+          scrub: true, // full smooth progress binding
         },
       })
         .to(
           [leftGlowRef.current, rightGlowRef.current],
           {
             opacity: 1,
+            attr: { fillOpacity: 0.9 },
             duration: 1,
             ease: "power1.out",
-            attr: { fillOpacity: 0.9 },
           },
           0
         )
@@ -48,8 +48,7 @@ export const OwlBackdrop: React.FC = () => {
           {
             scale: 1.17,
             transformOrigin: "50% 50%",
-            duration: 1.15,
-            ease: "power1.out",
+            ease: "none", // linear scroll-sync
             overwrite: true,
             clearProps: "transform",
           },
