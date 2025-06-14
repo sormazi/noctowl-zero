@@ -1,51 +1,63 @@
 
 import React from "react";
+import { TechCrunchLogo } from "./publication-logos/TechCrunchLogo";
+import { FinextraLogo } from "./publication-logos/FinextraLogo";
+import { A16zLogo } from "./publication-logos/A16zLogo";
+import { TheInformationLogo } from "./publication-logos/TheInformationLogo";
+import { YCombinatorLogo } from "./publication-logos/YCombinatorLogo";
+import { HackerNewsLogo } from "./publication-logos/HackerNewsLogo";
 
-// List of publications (simulate logos with stylized text for now)
+// List of publication logo components (order matters!)
 const publications = [
-  { name: "TechCrunch", className: "font-extrabold tracking-wide" },
-  { name: "Bloomberg", className: "font-bold italic" },
-  { name: "Finextra", className: "font-semibold tracking-tight" },
-  { name: "The Information", className: "font-playfair text-lg" },
-  { name: "a16z blog", className: "font-semibold uppercase tracking-wide" },
-  { name: "Y Combinator", className: "font-bold" },
-  { name: "Hacker News", className: "font-semibold text-orange-400" },
-  { name: "Forbes", className: "font-extrabold italic" },
-  { name: "Fortune", className: "font-bold tracking-widest" },
-  { name: "Business Insider", className: "font-medium lowercase" },
-];
-
-// Split publications into two rows (top 5, bottom 5)
-const ROWS = [
-  publications.slice(0, 5),
-  publications.slice(5),
+  {
+    name: "TechCrunch",
+    Logo: TechCrunchLogo,
+  },
+  {
+    name: "Finextra",
+    Logo: FinextraLogo,
+  },
+  {
+    name: "a16z",
+    Logo: A16zLogo,
+  },
+  {
+    name: "The Information",
+    Logo: TheInformationLogo,
+  },
+  {
+    name: "Y Combinator",
+    Logo: YCombinatorLogo,
+  },
+  {
+    name: "Hacker News",
+    Logo: HackerNewsLogo,
+  },
 ];
 
 export const AsFeaturedInSection = () => (
-  <section className="w-full max-w-5xl mx-auto py-14 md:py-20 px-3 mt-16 mb-2">
+  <section
+    className="w-full max-w-5xl mx-auto py-14 md:py-20 px-3 mt-16 mb-2"
+    aria-label="As featured in"
+  >
     <h3
       className="text-center text-base md:text-lg font-light uppercase tracking-[.15em] text-white/40 mb-7"
       style={{ letterSpacing: "0.16em" }}
     >
       AS FEATURED IN
     </h3>
-    <div className="flex flex-col gap-6 md:gap-8 items-center">
-      {ROWS.map((row, i) => (
-        <div
-          key={i}
-          className="flex flex-wrap justify-center gap-x-10 gap-y-4 px-1"
+    <div className="flex flex-wrap justify-center items-center gap-7 sm:gap-10 md:gap-14 px-1">
+      {publications.map(({ name, Logo }) => (
+        <span
+          key={name}
+          className="flex justify-center items-center opacity-95 hover:opacity-100 transition-opacity"
+          style={{ minWidth: 54, minHeight: 32 }}
+          aria-label={name}
         >
-          {row.map((pub) => (
-            <span
-              key={pub.name}
-              className={`text-white/85 hover:text-white transition-colors duration-200 text-lg md:text-xl lg:text-2xl select-none opacity-90 ${pub.className}`}
-              style={{ minWidth: "120px", textAlign: "center" }}
-            >
-              {pub.name}
-            </span>
-          ))}
-        </div>
+          <Logo style={{ display: "block", maxWidth: 130, height: 32 }} />
+        </span>
       ))}
     </div>
   </section>
 );
+
