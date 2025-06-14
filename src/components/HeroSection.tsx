@@ -21,7 +21,6 @@ export const HeroSection = ({ onWaitlist }: { onWaitlist: () => void }) => {
         <span className="block mt-2 text-base font-light opacity-70 tracking-tightest text-white/70" style={{ fontSize: "1.08rem" }}>
           by <span className="align-sub text-sm opacity-80 font-medium">QQ Labs</span>
         </span>
-        {/* Impactful statement updated here */}
         <div className="mt-8 mb-3">
           <span className="block text-[clamp(1.2rem,2.1vw,2rem)] font-extrabold text-white tracking-tightest drop-shadow-sm">
             Markets sleep. NoctOwl doesn’t.
@@ -31,8 +30,9 @@ export const HeroSection = ({ onWaitlist }: { onWaitlist: () => void }) => {
           className="mt-6 text-lg md:text-xl text-white/80 font-light max-w-xl mx-auto tracking-tight"
           style={{ opacity: 0.75 }}
         >
-          NoctOwl ZERO is the first foundational LLM Agent for modern finance.<br />
-          Deploy market-agnostic region-agnostic AI agents that can simultaneously read filings, analyze option-flow, decode releases and synthesize research into pure strategy— then generate AND execute before the street can react
+          NoctOwl ZERO is the first foundational LLM Agent for modern finance.
+          <br />
+          Deploy market-agnostic region-agnostic AI agents that can read SEC filings, analyze option-flow, decode press releases and synthesize research simultaneously into pure strategy— and execute before the street can react
         </p>
         <div className="flex flex-col-reverse md:flex-row gap-3 md:gap-7 justify-center mt-9">
           <NeumorphicButton onClick={onWaitlist} className="w-full md:w-auto">

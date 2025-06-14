@@ -12,8 +12,6 @@ Ingest 10-Ks, earnings transcripts, or investor presentations and receive struct
 • Sector-relative KPI benchmarking
 • Embedded management sentiment analysis
 
-────────────────────────────
-
 📉 Quantitative & HFT Intelligence Layer
 
 Run AI-assisted analytics over time-series and market microstructure data to:
@@ -22,8 +20,6 @@ Run AI-assisted analytics over time-series and market microstructure data to:
 • Auto-generate and backtest synthetic trading strategies
 e.g., "Scan for tickers with option-implied divergence vs realized volatility over the last 3 sessions"
 
-────────────────────────────
-
 📰 Macro + Earnings Analysis Mode
 
 Deploy AI agents capable of:
@@ -31,8 +27,6 @@ Deploy AI agents capable of:
 • Quantifying forward guidance shifts in tone and semantics
 • Compressing multi-quarter earnings calls into narrative-rich, KPI-aware executive summaries
 Ask: "Map Powell's forward tone against 2Y yield movements" or "Extract key margin commentary from NVDA Q1–Q5"
-
-────────────────────────────
 
 🐍 API-First Architecture for Trading Systems
 
