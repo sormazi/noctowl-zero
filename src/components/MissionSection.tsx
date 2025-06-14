@@ -1,4 +1,3 @@
-
 import React from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -45,21 +44,20 @@ export const MissionSection = () => {
         <div className="max-w-4xl mx-auto px-2 sm:px-4">
           <GlassCard
             className="
-              bg-white/10 dark:bg-[#16171f]/10
               relative
-              backdrop-blur-[10px]
-              px-3 py-4 sm:px-8 sm:py-8
+              bg-white/20 dark:bg-[#181B22]/30
+              backdrop-blur-lg
+              border border-white/10 dark:border-cyan-200/5
               shadow-none
-              transition-all
-              duration-500
-              ring-1 ring-cyan-200/5
-              "
+              px-3 py-4 sm:px-8 sm:py-8
+              ring-0
+            "
             style={{
-              boxShadow: "0 8px 32px 0 rgba(31,38,135,0.09)", // soft/frosty
-              border: "1.5px solid rgba(180,242,255,0.08)"
+              boxShadow: "none", // Remove any extra shadow
+              border: "1.5px solid rgba(180,242,255,0.08)",
+              background: "rgba(30,32,48,0.25)" // More transparent and subtle
             }}
           >
-            {/* Only the owl's eye glow overlay remains */}
             <OwlEyesGlowOverlay />
             <div className="flex flex-col md:flex-row items-center gap-5 md:gap-12">
               <div className="flex-grow w-full">
@@ -83,4 +81,3 @@ export const MissionSection = () => {
     </AnimatedSection>
   );
 };
-
