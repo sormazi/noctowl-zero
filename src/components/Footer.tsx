@@ -26,6 +26,14 @@ export const Footer = () => (
       >
         Waitlist
       </a>
+      <a
+        href="https://noctowl-zero.lovable.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline underline-offset-2 tracking-tightest font-semibold"
+      >
+        noctowl.app
+      </a>
     </div>
   </footer>
 );
