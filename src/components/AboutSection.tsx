@@ -7,7 +7,7 @@ export const AboutSection = () => (
   <AnimatedSection
     as="section"
     id="about"
-    className="max-w-2xl mx-auto mt-24"
+    className="max-w-4xl mx-auto mt-24"
     delay={200}
   >
     <GlassCard>
@@ -15,7 +15,7 @@ export const AboutSection = () => (
         About
       </h2>
       <p className="text-base md:text-lg font-light text-black/80 dark:text-white/80">
-        We're a bunch of Harvard fin-bros fed-up with half-baked underwhelming bloatware. Our quest is to build and provide tools optimized for speed, precision and nuance—most importantly, when the bell dings, perform EXACTLY as advertised.
+        We are a team of Harvard-trained finance and technology professionals, driven by a shared mission: to help you build intelligent agents that are optimized for precision, speed, and financial nuance. Our solutions are designed to integrate seamlessly into your existing infrastructure—so you can focus entirely on generating alpha, while we handle the rest.
       </p>
     </GlassCard>
   </AnimatedSection>
