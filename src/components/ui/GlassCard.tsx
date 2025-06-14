@@ -11,8 +11,8 @@ export const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
     <div
       ref={ref}
       className={cn(
-        "backdrop-blur-2xl bg-white/30 dark:bg-white/10 border border-white/25 rounded-xl shadow-glass" +
-          " p-8 transition-all duration-500",
+        // Enhanced glassmorphism: increased blur, darker background, border glow
+        "backdrop-blur-2xl bg-[#23243a]/70 dark:bg-[#16171f]/70 border border-white/20 dark:border-cyan-400/10 rounded-2xl shadow-glass p-8 transition-all duration-500 ring-1 ring-cyan-200/5",
         className
       )}
       {...props}
@@ -22,4 +22,3 @@ export const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
   )
 );
 GlassCard.displayName = "GlassCard";
-
