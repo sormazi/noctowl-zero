@@ -1,8 +1,7 @@
 
-import React, { useRef } from "react";
+import React from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { ScrollTypingEffect } from "@/components/ScrollTypingEffect";
 
 const featureText = `
 🧠 LLM-Driven Valuation Engine
@@ -49,7 +48,6 @@ export const MissionSection = () => {
     <AnimatedSection as="section" id="mission" className="w-full mt-24 relative" delay={150}>
       <div className="w-full relative left-0 right-0">
         <div className="max-w-4xl mx-auto px-4">
-          {/* Increased opacity by overriding GlassCard glass bg color */}
           <GlassCard className="bg-[#23243a]/95 dark:bg-[#16171f]/95">
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
               <div className="flex-grow">
@@ -59,13 +57,12 @@ export const MissionSection = () => {
                 >
                   Why NoctOWL ZERO?
                 </h2>
-                <ScrollTypingEffect
-                  text={featureText.trim()}
-                  className="mt-4 flex flex-col text-black/80 dark:text-white/80 text-lg font-light max-w-2xl"
-                  fontClassName="whitespace-pre-line"
-                  typingDelay={12}
-                  deletingDelay={7}
-                />
+                <pre
+                  className="mt-4 flex flex-col text-black/80 dark:text-white/80 text-lg font-light max-w-2xl whitespace-pre-line"
+                  style={{ fontFamily: 'inherit' }}
+                >
+                  {featureText.trim()}
+                </pre>
               </div>
             </div>
           </GlassCard>
@@ -74,3 +71,4 @@ export const MissionSection = () => {
     </AnimatedSection>
   );
 };
+
