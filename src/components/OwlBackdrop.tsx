@@ -15,11 +15,11 @@ export const OwlBackdrop: React.FC = () => {
   const rightEyeRef = useRef<SVGEllipseElement>(null);
   const leftGlowRef = useRef<SVGEllipseElement>(null);
   const rightGlowRef = useRef<SVGEllipseElement>(null);
+  const owlSvgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     let ctx: gsap.Context | undefined;
     ctx = gsap.context(() => {
-      // Animate eyes lighting up and glow increasing as user scrolls
       gsap.timeline({
         scrollTrigger: {
           trigger: "#home",
@@ -28,26 +28,35 @@ export const OwlBackdrop: React.FC = () => {
           scrub: 0.7,
         },
       })
-      .to(
-        [leftGlowRef.current, rightGlowRef.current],
-        {
-          opacity: 1,
-          duration: 1,
-          ease: "power1.out",
-          // also animate glow's fillOpacity for extra vividness
-          attr: { fillOpacity: 0.9 },
-        },
-        0
-      )
-      .to(
-        [leftEyeRef.current, rightEyeRef.current],
-        {
-          fill: "#61efff",
-          duration: 1.1,
-          ease: "power1.out",
-        },
-        0
-      );
+        .to(
+          [leftGlowRef.current, rightGlowRef.current],
+          {
+            opacity: 1,
+            duration: 1,
+            ease: "power1.out",
+            attr: { fillOpacity: 0.9 },
+          },
+          0
+        )
+        .to(
+          [leftEyeRef.current, rightEyeRef.current],
+          {
+            fill: "#61efff",
+            duration: 1.1,
+            ease: "power1.out",
+          },
+          0
+        )
+        .to(
+          owlSvgRef.current,
+          {
+            scale: 1.17,
+            transformOrigin: "50% 45%",
+            duration: 1.15,
+            ease: "power1.out",
+          },
+          0
+        );
     });
     return () => ctx && ctx.revert();
   }, []);
@@ -63,6 +72,7 @@ export const OwlBackdrop: React.FC = () => {
       }}
     >
       <svg
+        ref={owlSvgRef}
         width="620"
         height="390"
         viewBox="0 0 620 390"
