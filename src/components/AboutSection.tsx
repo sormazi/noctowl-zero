@@ -10,7 +10,8 @@ export const AboutSection = () => (
     className="max-w-4xl mx-auto mt-24"
     delay={200}
   >
-    <GlassCard>
+    {/* Less transparent glass effect */}
+    <GlassCard className="bg-[#23243a]/90 dark:bg-[#16171f]/90">
       <h2 className="text-2xl md:text-3xl font-semibold mb-3 tracking-tight font-sans text-black dark:text-white" style={{letterSpacing:"-.05em"}}>
         About
       </h2>

@@ -1,4 +1,3 @@
-
 import React, { useRef } from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -15,7 +14,8 @@ export const MissionSection = () => {
     <AnimatedSection as="section" id="mission" className="w-full mt-24 relative" delay={150}>
       <div className="w-full relative left-0 right-0">
         <div className="max-w-4xl mx-auto px-4">
-          <GlassCard>
+          {/* Increase opacity by overriding GlassCard glass bg color */}
+          <GlassCard className="bg-[#23243a]/90 dark:bg-[#16171f]/90">
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
               <div className="flex-grow">
                 <h2
